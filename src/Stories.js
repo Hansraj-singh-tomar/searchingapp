@@ -26,10 +26,11 @@ const Stories = () => {
                 By <span>{author}</span> | <span>{num_comments}</span> comments
               </p>
               <div className='card-button'>
-                <a href={url} target="_blank" >
+                <a href={url} >
                   Read More
                 </a>
-                <a href="#" onClick={() => removePost(objectID)}>
+                {/* <a href="#" onClick={() => removePost(objectID)}> */}
+                <a href='*' onClick={() => removePost(objectID)}>
                   Remove 
                  </a>
               </div>

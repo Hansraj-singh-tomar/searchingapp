@@ -20,13 +20,17 @@ const AppProvider = ({ children }) => {  // hamare application ke andar jitna bh
     // const [state, setState] = React.useState(initialState);
     const [ state, dispatch ] = useReducer(reducer,initialState);
     
-    dispatch({ type : "SET_LOADING" })
+    // dispatch({ type : "SET_LOADING" })
+
+    useEffect(() => {
+        dispatch({ type : "SET_LOADING" });
+    }, []);
     
     const fetchApiData = async (url) => {
         try {   
             const res = await fetch(url);
             const data = await res.json();
-            console.log(data);
+            // console.log(data);
             dispatch({ 
                 type : "GET_STORIES",
                 payload :  {
@@ -72,7 +76,7 @@ const AppProvider = ({ children }) => {  // hamare application ke andar jitna bh
     // to call the API function
     useEffect(() => {
         fetchApiData(`${API}query=${state.query}&page=${state.page}`);
-    }, [state.query, state.page]);
+    }, [state.query, state.page]);  //state.query, state.page
 
     
 
